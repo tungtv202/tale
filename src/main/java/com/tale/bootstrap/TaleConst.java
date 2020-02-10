@@ -22,7 +22,7 @@ public class TaleConst {
     public static       String      LOGIN_SESSION_KEY  = "login_user";
     public static       String      REMEMBER_TOKEN     = "";
     public static       Environment OPTIONS            = Environment.of(new HashMap<>());
-    public static       Boolean     INSTALLED          = false;
+    public static       Boolean     INSTALLED          = true;
     public static       Boolean     ENABLED_CDN        = true;
     public static       Environment BCONF              = null;
 
