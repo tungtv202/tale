@@ -1,0 +1,122 @@
+#include('../header.html',{active: 'publish', title:'New article'})
+#include('./_header.html')
+<div id="app" class="row" v-cloak>
+    <loading :active.sync="isLoading" :can-cancel="true"></loading>
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Article</h3>
+            </div>
+            <div class="panel-body">
+                <input type="hidden" id="attach_url" value="${attachURL()}" />
+                <form id="articleForm">
+                    <input type="hidden" v-model="article.cid"/>
+                    <input type="hidden" v-model="article.created"/>
+                    <input type="hidden" v-model="article.status"/>
+                    <input type="hidden" v-model="article.allowComment" />
+                    <input type="hidden" v-model="article.allowPing" />
+                    <input type="hidden" v-model="article.allowFeed" />
+                    <input type="hidden" v-model="article.fmtType"/>
+                    <input type="hidden" v-model="article.tags"/>
+
+                    <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
+                        <input class="form-control" placeholder="title..." v-model="article.title" required/>
+                    </div>
+
+                    <div class="form-group col-md-6" style="padding: 0 0 0 10px;">
+                        <input class="form-control" placeholder="slug...：my-first-article " v-model="article.slug"/>
+                    </div>
+
+                    <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
+                        <input id="tags" type="text" class="form-control" placeholder="tags..."/>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <v-select multiple v-model="article.selected" :options="categories"></v-select>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="form-group col-xs-12">
+                        <div class="pull-right">
+                            <button class="btn btn-purple btn-sm waves-effect waves-light switch-editor" @click="switchEditor">
+                                Switch Editor
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="md-container" v-show="article.fmtType == 'markdown'" class="form-group col-md-12">
+                        <textarea id="md-editor"></textarea>
+                    </div>
+                    <div id="html-container" v-show="article.fmtType == 'html'" class="form-group col-md-12">
+                        <div class="summernote"></div>
+                    </div>
+
+                    <div class="form-group col-md-3 col-xs-4">
+                        <label class="col-sm-4">can't comment?</label>
+                        <div class="col-sm-8">
+                            <div id="allowComment" class="toggle toggle-success"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3 col-xs-4">
+                        <label class="col-sm-4">allow ping?</label>
+                        <div class="col-sm-8">
+                            <div id="allowPing" class="toggle toggle-success"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3 col-xs-4">
+                        <label class="col-sm-4">allow feed?</label>
+                        <div class="col-sm-8">
+                            <div id="allowFeed" class="toggle toggle-success"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3 col-xs-12">
+                        <label class="col-sm-5">add thumb?</label>
+                        <div class="col-sm-7">
+                            <div id="addThumb" class="toggle toggle-success"></div>
+                        </div>
+                    </div>
+
+                    <div id="dropzone-container" class="form-group col-md-12 hide">
+                        <div class="dropzone dropzone-previews" id="dropzone">
+                            <div class="dz-message">
+                                <p>Can add a thumbnail for your article ;)</p>
+                            </div>
+                        </div>
+                        <input type="hidden" name="thumbImg" id="thumbImg"/>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="form-group col-md-6">
+                        <div class="text-left">
+                            <label class="col-sm-2 control-label" style="line-height: 30px;">time to publish</label>
+                            <div class="col-sm-9 input-append date form_datetime">
+                                <input v-model="article.createdTime" style="width: 150px;" size="16" type="text" readonly class="form-control" id="form_datetime">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <div class="text-right">
+                            <a class="btn btn-default waves-effect waves-light" href="/admin/articles">Back</a>
+                            <button type="button" class="btn btn-primary waves-effect waves-light" @click="publish('publish')">
+                                Publish
+                            </button>
+                            <button type="button" class="btn btn-warning waves-effect waves-light" @click="publish('draft')">
+                                Draft
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+#include('./_footer.html')
+<script src="/static/admin/js/new_article.js?v=${version}" ></script>
+</body>
+</html>

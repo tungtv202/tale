@@ -1,0 +1,27 @@
+#include('./partial/header.html',{home_page:1})
+<div class="main-content index-page clearfix">
+    <div class="post-lists">
+        <div class="post-lists-body">
+            #for(article : articles(12).rows)
+            <div class="post-list-item">
+                <div class="post-list-item-container">
+                    <div class="item-label" >
+                        <div class="item-title"><a href="${permalink()}" style="word-break: unset;">${title()}</a>
+                        </div>
+                        <div class="item-meta clearfix">
+                            <div class="item-meta-date italic-text" style="color: #1b1f23">created date: ${created('yyyy-MM-dd')}</div>
+                            <div class="item-meta-cat" style="color: #1a2942">
+                                ${show_categories()}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            #end
+        </div>
+    </div>
+    <div class="lists-navigator clearfix">
+        #call pageNav(articles(12),'←','→','page')
+    </div>
+</div>
+#include('./partial/footer.html')

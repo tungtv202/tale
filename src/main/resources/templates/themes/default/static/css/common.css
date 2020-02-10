@@ -1,0 +1,13 @@
+.bold-text {
+    font-weight: bold;
+}
+
+.italic-text {
+    font-style: italic;
+}
+
+.font-vcode {
+    /*font-family: Consolas, 'Courier New', monospace;*/
+    font-family: cursive;
+    /*font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;;*/
+}

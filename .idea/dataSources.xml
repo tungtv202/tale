@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="tale.db" uuid="9ee18131-7ff6-4073-bedd-4b8efd3ee0b8">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\tungt\workplace\tale\tale.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="postgres@192.168.60.4" uuid="afce4a5b-3069-4a0c-9f4b-fbb642426c17">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://192.168.60.4:5432/postgres</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="MySQL for 5.1 - @192.168.60.4" uuid="538edb54-4ba0-47fa-ab5c-c23d3dba4923">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://192.168.60.4:3307</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="aws tungexlorer" uuid="b61b085a-f869-4ff4-b502-4b623f602b30">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://tungexplorer.me:3307</jdbc-url>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="keywords" content="${meta_keywords()}"/>
+    <meta name="description" content="${meta_description()}"/>
+    <meta content="${_csrf_token}" name="csrf_token"/>
+    <link rel="shortcut icon" href="https://tungexplorer.s3.ap-southeast-1.amazonaws.com/logo_icon/icon.jpg"/>
+    <link rel="apple-touch-icon" href="${theme_url('/static/img/apple-touch-icon.png')}"/>
+    <title>${head_title()}</title>
+    <link href="${theme_url('/static/css/default.min.css')}" rel="stylesheet">
+    <link href="${theme_url('/static/css/style.css')}" rel="stylesheet">
+    <link href="${theme_url('/static/css/common.css')}" rel="stylesheet">
+    <link href="${theme_url('/static/css/markdownreader.css')}" rel="stylesheet">
+    <link href="${theme_url('/static/css/hljs.min.css')}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    #if(allow_cloud_CDN() == "true")
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    #else
+    <script src="/static/admin/plugins/jquery/3.2.1/jquery.min.js"></script>
+    #end
+
+    <script src="${theme_url('/static/js/highlight.min.js')}"></script>
+    <script src="${theme_url('/static/js/instantclick.min.js')}"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<style>
+    .search {
+        width: 100%;
+        position: relative;
+        display: flex;
+    }
+
+    .searchTerm {
+        width: 100%;
+        border: 2px solid #2f353f;
+        border-right: none;
+        padding: 5px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+    }
+
+    .searchTerm:focus {
+        color: #00B4CC;
+    }
+
+    .searchButton {
+        width: 40px;
+        height: 36px;
+        border: 1px solid #2f353f;
+        background: #2f353f;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    /*Resize the wrap to see the search bar change!*/
+    .wrap {
+        width: 40%;
+        position: absolute;
+        top: 50%;
+        right: -15%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+<body #if(!is_post) class="bg-grey" #end gtools_scp_screen_capture_injected="true">
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    a <strong>b</strong> c. <a href="http://browsehappy.com/" target="_blank">d</a>。
+</div>
+<![endif]-->
+<script>
+    function searchTrigger() {
+        var input  = document.getElementById("search-inp").value;
+        if (input && input !== '') {
+            window.location.href = '/search/' + input;
+        }
+    }
+</script>
+<header id="header" class="header bg-white">
+    <div class="navbar-container">
+        <a href="${site_url()}" class="navbar-logo bold-text" id="logo-only-show-desktop"
+           style="color:#2f353f; text-decoration: none; font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;">
+            #if(theme_option('logo_url') == "")
+            <img src="${theme_url('/static/img/logo.png')}" alt="${site_title()}"/>
+            #else
+            <img src="${theme_option('logo_url')}" alt="${site_title()}" style="border-radius: 20%;"/>
+            #end
+            Tung Explorer
+        </a>
+
+        <div class="wrap" id="search-box-header">
+            <div class="search">
+<!--                <form role="search" onsubmit="return false;">-->
+                    <input type="text" id="search-inp" class="searchTerm" placeholder="What are you looking for?">
+                    <button type="submit" class="searchButton" onclick="searchTrigger()">
+                        <i class="fa fa-search"></i>
+                    </button>
+<!--                </form>-->
+            </div>
+        </div>
+
+        <!--<div class="navbar-menu bold-text">
+            <a href="${site_url('/archives')}" class="font-vcode"
+               style="color:#2f353f; font-family: cursive;">archives</a>
+            &lt;!&ndash;            <a href="${site_url('/links')}">友链</a>&ndash;&gt;
+            &lt;!&ndash;            <a href="${site_url('/about')}">about</a>&ndash;&gt;
+        </div>
+
+        <div class="navbar-mobile-menu" onclick="">
+            <span class="icon-menu cross"><span class="middle"></span></span>
+            <ul>
+                <li><a href="${site_url('/archives')}">archives</a></li>
+                &lt;!&ndash;                <li><a href="${site_url('/links')}">友链</a></li>&ndash;&gt;
+                &lt;!&ndash;                <li><a href="${site_url('/about')}">about</a></li>&ndash;&gt;
+            </ul>
+        </div>-->
+    </div>
+</header>
