@@ -60,7 +60,8 @@ public class BaseWebHook implements WebHook {
                     logs.setData(context.request().bodyToString());
                 }
                 logs.setCreated(DateKit.nowUnix());
-                logs.save();
+                // TODO save error
+//                logs.save();
             }
         }
         return true;
