@@ -2,8 +2,10 @@ package com.tale.extension;
 
 import io.netty.util.internal.StringUtil;
 
-import java.io.*;
-import java.net.MalformedURLException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
@@ -42,5 +44,29 @@ public class GetContentURL {
             return "";
         }
         return value.substring(adjustedPosA, posB);
+    }
+
+    public static String getTOC(String url) {
+        String contentFromUrl = GetContentURL.getContentFromUrl(url);
+        Reader temp = new StringReader(contentFromUrl);
+        BufferedReader reader = new BufferedReader(temp);
+        StringBuilder result = new StringBuilder();
+        String line = null;
+        try {
+            line = reader.readLine();
+            while (line != null) {
+                if (line.length() > 2) {
+                    if ("##".equals(line.substring(0, 2))) {
+                        result.append(line.substring(1, line.length())).append("<br>");
+                    }
+                }
+
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result.toString();
     }
 }

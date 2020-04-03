@@ -287,7 +287,16 @@ public final class Theme {
     public static String intro(int len) {
         Contents contents = current_article();
         if (null != contents) {
-            return intro(contents.getContent(), len);
+            return contents.getToc();
+//            return intro(contents.getContent(), len);
+        }
+        return "";
+    }
+
+    public static String linkGit() {
+        Contents contents = current_article();
+        if (null != contents) {
+            return contents.getContent();
         }
         return "";
     }

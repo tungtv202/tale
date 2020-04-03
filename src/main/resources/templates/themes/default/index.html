@@ -1,25 +1,37 @@
 #include('./partial/header.html',{home_page:1})
 <div class="main-content index-page clearfix">
-    <div class="post-lists">
-        <div class="post-lists-body">
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped" style="border-collapse: unset !important; border-spacing: 10px;">
+            <tbody>
+            <thead style="opacity: 0; border: 0 none; height: 0;">
+            <tr>
+                <th style="min-width: 880px; max-width: 880px"></th>
+            </tr>
+            </thead>
             #for(article : articles(12).rows)
-            <div class="post-list-item">
-                <div class="post-list-item-container">
-                    <div class="item-label" >
-                        <div class="item-title"><a href="${permalink()}" style="word-break: unset;">${title()}</a>
-                        </div>
-                        <div class="item-meta clearfix">
-                            <div class="item-meta-date italic-text" style="color: #1b1f23">created date: ${created('yyyy-MM-dd')}</div>
-                            <div class="item-meta-cat" style="color: #1a2942">
+            <tr>
+                <td style="box-shadow: 0.5px 0.5px 3px;">
+                    <div>
+                        <div class="titreDoc"><a
+                                style="font-size: 17px; line-height: 17px; word-break: break-all; color: #313131"
+                                href="${permalink()}">${title()}</a>
+                            <span class="post-tags" style="border: 0;">
                                 ${show_categories()}
-                            </div>
+                            </span>
+                            <span class="sizeDoc">${created('yyyy-MM-dd')}</span>
                         </div>
+                        <p class="small apercuCode">${intro(2000)}</p>
+
+                        <em class="pathDoc small"><a href="${linkGit()}" style="color: black; font-size: 10px !important;">${linkGit()}</a></em>
                     </div>
-                </div>
-            </div>
+                </td>
+            </tr>
             #end
-        </div>
+            </tbody>
+        </table>
     </div>
+
     <div class="lists-navigator clearfix">
         #call pageNav(articles(12),'←','→','page')
     </div>

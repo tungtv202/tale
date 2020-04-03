@@ -5,6 +5,7 @@ import com.blade.ioc.annotation.Bean;
 import com.blade.ioc.annotation.Inject;
 import com.blade.kit.DateKit;
 import com.blade.kit.StringKit;
+import com.tale.extension.GetContentURL;
 import com.tale.model.dto.Types;
 import com.tale.model.entity.Comments;
 import com.tale.model.entity.Contents;
@@ -89,6 +90,7 @@ public class ContentsService {
     public void updateArticle(Contents contents) {
         contents.setCreated(contents.getCreated());
         contents.setModified(new Date());
+        contents.setToc(GetContentURL.getTOC(contents.getContent()));
         contents.setContent(EmojiParser.parseToAliases(contents.getContent()));
         contents.setTags(contents.getTags() != null ? contents.getTags() : "");
         contents.setCategories(contents.getCategories() != null ? contents.getCategories() : "");

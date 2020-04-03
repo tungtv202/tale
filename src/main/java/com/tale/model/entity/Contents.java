@@ -49,6 +49,7 @@ public class Contents extends Model {
     /**
      * 文章内容
      */
+    private String toc;
     private String content;
 
     /**
