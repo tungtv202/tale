@@ -99,7 +99,7 @@ public class SiteService {
             Page<Contents> contentsPage = select().from(Contents.class)
                                                   .where(Contents::getStatus, Types.PUBLISH)
                                                   .and(Contents::getType, Types.ARTICLE)
-                                                  .order(Contents::getCreated, OrderBy.DESC)
+                                                  .order(Contents::getModified, OrderBy.DESC)
                                                   .page(1, limit);
 
             return contentsPage.getRows();
