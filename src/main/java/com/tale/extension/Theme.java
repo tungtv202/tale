@@ -257,15 +257,13 @@ public final class Theme {
      */
     public static String show_content() throws IOException {
         Contents contents = current_article();
-        String plainContent = contents.getContent();
-        String url = GetContentURL.getUrlFromContent(contents.getContent(), "[[[", "]]]");
-        String contentFromUrl = GetContentURL.getContentFromUrl(url);
-        plainContent = plainContent.replace("[[[" + url + "]]]", contentFromUrl);
+        assert contents != null;
+        String url = contents.getContent();
+        String plainContent = GetContentURL.getContentFromUrl(url);
         plainContent += "<br/> <br/> <br/>";
         plainContent += "---------------- <br/>";
         plainContent += "**\u00a9 [GitHub]("+url+")** <br/>" ;
-
-        return null != plainContent ? article(plainContent) : "";
+        return article(plainContent);
     }
 
     /**
